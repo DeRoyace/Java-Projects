@@ -34,7 +34,6 @@ public class Calculator
                 size++;
             }
         }
-
     } // end of accept()
     
     // Recursive function to store operators and operands seperately in arrays:
@@ -103,7 +102,7 @@ public class Calculator
         return cal;
     } // end of operator()
     
-    public static void main() //write main(String[] args) while using in other IDEs.
+    public static void main(String[] args)
     {
         accept();
         if(calc.equals("exit()") )
@@ -139,7 +138,7 @@ public class Calculator
                 System.out.println(result);
             else
                 System.out.println(calc);
-            main(); // calls the main function
+            main(args); // calls the main function
         }
     }// end of main()
 } // end of class
