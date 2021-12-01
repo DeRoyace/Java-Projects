@@ -22,7 +22,7 @@ public class Calculator
     {
         Scanner sc=new Scanner(System.in);
         //System.out.println("Your Calculator is here...");
-        System.out.print("\n>> ");
+        System.out.print("\n>>> ");
         calc = sc.nextLine();
         int len=calc.length();
         size=0;
