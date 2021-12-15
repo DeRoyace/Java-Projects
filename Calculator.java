@@ -13,7 +13,7 @@
 import java.util.*;
 public class Calculator
 {
-    static String calc; // gets the string from user
+    static String inputs; // gets the string from user
     static double num[]; // to store the numbers or the operands
     static char opera[]; // to store the operators
     static int size; // stores the number of operators
@@ -23,17 +23,18 @@ public class Calculator
         Scanner sc=new Scanner(System.in);
         //System.out.println("Your Calculator is here...");
         System.out.print("\n>>> ");
-        calc = sc.nextLine();
-        int len=calc.length();
+        inputs = sc.nextLine();
+        int len=inputs.length();
         size=0;
         for(int i=0;i<len;i++)
         {
-            char ch=calc.charAt(i);
+            char ch=inputs.charAt(i);
             if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^')
             {
                 size++;
             }
         }
+
     } // end of accept()
     
     // Recursive function to store operators and operands seperately in arrays:
@@ -49,13 +50,13 @@ public class Calculator
             {
                 if(!temp.equals(""))
                 {
-                    num[j]=Integer.parseInt(temp);
+                    num[j]=Double.parseDouble(temp);
                     j+=1;
                 }
                 opera[i]=ch;
                 fillArray(x.substring(1),"",i+1,j);
             }
-            else if(Character.isDigit(ch))
+            else if(Character.isDigit(ch) || ( ch=='.' && Character.isDigit( x.charAt(1) ) ) )
             {
                 temp+=ch;
                 fillArray(x.substring(1),temp,i,j);
@@ -64,7 +65,7 @@ public class Calculator
             {
                 if(!temp.equals(""))
                 {
-                    num[j]=Integer.parseInt(temp);
+                    num[j]=Double.parseDouble(temp);
                     j+=1;
                 }
                 fillArray(x.substring(1),"",i,j);
@@ -72,7 +73,7 @@ public class Calculator
         }
     } // end of fillArray()
     
-    //calculations of the instructuions given by user:
+    //inputsulations of the instructuions given by user:
     public static double operator(char c, double a, double b)
     {
         double cal=0.0d;
@@ -105,7 +106,7 @@ public class Calculator
     public static void main(String[] args)
     {
         accept();
-        if(calc.equals("exit()") )
+        if(inputs.equals("exit()") || inputs.equals("exit(0)"))
         {
             System.exit(0);
         }
@@ -113,15 +114,7 @@ public class Calculator
         {
             num=new double[size+1];
             opera=new char[size];
-            fillArray(calc+" ","",0,0);
-            /*
-            for(int i=0;i<size;i++)
-            System.out.print(opera[i]+", ");
-
-            System.out.println("\nNumbers are: ");
-            for(int i=0;i<size+1;i++)
-            System.out.print(num[i]+", ");
-             */
+            fillArray(inputs+" ","",0,0);
             double result=0.0d;
             int j=0;
             for(int i=0;i<size+1;i++)
@@ -137,8 +130,8 @@ public class Calculator
             if(size>0)
                 System.out.println(result);
             else
-                System.out.println(calc);
-            main(args); // calls the main function
+                System.out.println(inputs);
         }
+        main(args); // calls the main function
     }// end of main()
 } // end of class
