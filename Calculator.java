@@ -2,7 +2,7 @@
  * Description : This program is inspired from python running on my Systems Comand Prompt terminal.
  * I started this program witht the idea of making a calculator
  * Later i open my window and thought about what if i make it feel like python running
- * But its actually JAVA my old buddy, my life, my f-u-t-u-r-e, or my GF :-)
+ * But its actually JAVA my old buddy :-)
  * ------------------------------------------------------------------------------------------------
  * @Rohit_Roy 
  * @version 2021.0 (created on 01.12.2021)
@@ -29,7 +29,7 @@ public class Calculator
         for(int i=0;i<len;i++)
         {
             char ch=inputs.charAt(i);
-            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^')
+            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='%' || ch=='^')
             {
                 size++;
             }
@@ -46,7 +46,7 @@ public class Calculator
         else
         {
             char ch=x.charAt(0);
-            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^')
+            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='%' || ch=='^')
             {
                 if(!temp.equals(""))
                 {
@@ -94,6 +94,10 @@ public class Calculator
             case '/':
             cal=a / b;
             break;
+            
+            case '%':
+            cal=a % b;
+            break;
 
             case '^':
             cal=Math.pow(a,b);
@@ -115,6 +119,7 @@ public class Calculator
             num=new double[size+1];
             opera=new char[size];
             fillArray(inputs+" ","",0,0);
+            
             double result=0.0d;
             int j=0;
             for(int i=0;i<size+1;i++)
