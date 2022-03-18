@@ -33,7 +33,7 @@ public class PythonTerminal
         for(int i=0;i<len;i++)
         {
             char ch=inputs.charAt(i);
-            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^')
+            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='%' || ch=='^')
             {
                 size++;
             }
@@ -50,7 +50,7 @@ public class PythonTerminal
         else
         {
             char ch=x.charAt(0);
-            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^')
+            if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='%' || ch=='^')
             {
                 if(!temp.equals(""))
                 {
@@ -96,7 +96,14 @@ public class PythonTerminal
             break;
 
             case '/':
-            cal=a / b;
+            if (b!=0)
+                cal=a/b;
+            else
+                System.out.println("Division by Zero!!");
+            break;
+
+            case '%':
+            cal=a%b;
             break;
 
             case '^':
